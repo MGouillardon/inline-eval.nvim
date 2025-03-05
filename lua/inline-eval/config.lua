@@ -8,7 +8,7 @@ M.defaults = {
 		"javascriptreact",
 		"typescriptreact",
 	},
-	node_path = "node",
+	node_path = "deno",
 	live_eval = {
 		enabled = true,
 		min_lines = 1,
