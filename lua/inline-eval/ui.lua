@@ -9,13 +9,21 @@ local state = {
 
 local function setup_buffer(buf)
 	vim.bo[buf].bufhidden = "hide"
-	vim.bo[buf].filetype = "javascript"
+
+	local current_ft = vim.bo.filetype
+	if current_ft == "php" then
+		vim.bo[buf].filetype = "php"
+	else
+		vim.bo[buf].filetype = "javascript"
+	end
+
 	vim.bo[buf].modifiable = false
 
 	if config.get().output.use_treesitter then
 		local ok, _ = pcall(require, "nvim-treesitter.parsers")
 		if ok then
-			vim.treesitter.start(buf, "javascript")
+			local ts_ft = current_ft == "php" and "php" or "javascript"
+			vim.treesitter.start(buf, ts_ft)
 		end
 	end
 end

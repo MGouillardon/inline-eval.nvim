@@ -7,8 +7,10 @@ M.defaults = {
 		"typescript",
 		"javascriptreact",
 		"typescriptreact",
+		"php",
 	},
 	node_path = "deno",
+	php_path = "php",
 	live_eval = {
 		enabled = true,
 		min_lines = 1,
